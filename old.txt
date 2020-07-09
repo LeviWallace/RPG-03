@@ -1,0 +1,61 @@
+    // describe a room
+    // you are in a small cave. stalactites hang from the ceiling and drip water. moss 
+    // in on the ground. 
+    // You see a heavy iron door with a large handle.
+    // open heavy iron door
+    // The door creaks on its ancient hinges as it slowly swings outward.
+    // Beyond you see a large dark room. 
+    // walk into large dark room                                                                                                                                                                                                                                                                
+    // you wanl through the door, ducking to get through the low frame.
+    // 
+    public static void gameLoop() throws Exception
+    {
+        Scanner scan = new Scanner(System.in);
+        Maze m = new Maze();
+        // m.showRooms();
+        System.out.println("Your Journey begins . . .");
+        Thread.sleep(2000);
+        while(true)
+        {
+            Room currRoomObj = m.getCurrRoomObj();
+            // description of room
+            currRoomObj.showDesc();
+            // list of door titles
+            currRoomObj.showDoors();
+            // get input from user
+            String input = scan.nextLine();
+            // System.out.println("you said " + line);
+            int num = -1;
+            try {
+                num = Integer.parseInt(input);
+            }
+            catch (NumberFormatException e)
+            {
+                System.out.println("You must enter a number. " + "\n");
+                continue;
+            }
+            if (input.equals("quit"))
+                break;
+            else if (1 <= num && num <= currRoomObj.getDoors().size())
+            {
+                Door doorObj = currRoomObj.getDoorObjByIndx(num-1);
+                if (doorObj.canPassThrough())
+                {
+                    String newRoomName = m.getNewRoomWithDoor(doorObj.getTitle());
+                    m.setCurrRoomName(newRoomName);
+                    System.out.println("You've passed through the door... What could be on the other side?");
+                }
+                else
+                {
+                    System.out.println("Unable to pass through the door. You are able to try again.");
+                }
+
+            }
+            else
+            {
+                System.out.println("The number you have entered is not between 1 and " + currRoomObj.getDoors().size() + ". ");
+            }
+            System.out.print("\n");
+        }
+        scan.close();
+    }
