@@ -2,7 +2,7 @@ import java.util.*;
 
 public class App {
  
-    public static void main2(String[] args)
+    public static void main(String[] args)
     {
         // System.out.println("Hello World");
         // m.showRooms();
@@ -16,14 +16,37 @@ public class App {
         }
     }
 
-    public static void main(String[] args) throws Exception
+    public static void main3(String[] args) throws Exception
     {
-        DisplayText.display("Google News is a news aggregator app developed by Google. It presents a continuous flow of articles organized from thousands of publishers and magazines. Google News is available as an app on Android, iOS, and the Web.");
+        TheMap map = new TheMap();
+        System.out.println("Done");
     }
+
+    public static void main1(String[] args) throws Exception
+    {
+        // TheMap map = new TheMap();
+        // int[] ls = {1, 2, 3};
+        // List<Integer> ls2 = new ArrayList<Integer>(Arrays.asList({1, 2, 3}));
+        // List<Integer> ls2 = new ArrayList<>(Arrays.asList(1, 2, 3));
+        // System.out.println(ls2.get(5));
+        // System.out.println(ls);
+        System.out.println(takeAnInt(1));
+    }
+
+    public static int takeAnInt(int i) throws Exception
+    {
+        if (i == 1)
+        {
+            throw new IllegalArgumentException();
+        }
+        return i;
+    }
+    
 
 
     public static void gameLoop2() throws Exception
     {
+        TheMap map = new TheMap();
         Scanner scan = new Scanner(System.in);
         // Maze m = new Maze();
         // m.showRooms();
@@ -36,6 +59,7 @@ public class App {
         // "too slippery to grasp"
         // describe room
         // a dark cave with low curtains
+        DisplayText.display(map.getRoom(map.location).description());
         while(true)
         {
             String input = scan.nextLine();

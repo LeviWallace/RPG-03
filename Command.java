@@ -9,15 +9,8 @@ public class Command
     public static final int COMMAND_PICK_UP = 1;
     public static final int COMMAND_OPEN = 2;
     public static final int COMMAND_DESCRIBE = 3;
-    public static final int COMMAND_MOVE = 4;
+    public static final int COMMAND_WALK = 4;
     
-    public static final Map<String, Integer> DIRECTIONS
-        = Map.of(
-            "north", 0,
-            "south", 1,
-            "east", 2,
-            "west", 3
-        ); 
 
     private String errorMessage;
     private String item;
@@ -45,8 +38,8 @@ public class Command
         }
         if (splitInput[0].equals("open")) {
             out.theCommand = COMMAND_OPEN;
-            if (DIRECTIONS.containsKey(splitInput[1]))
-                out.direction = DIRECTIONS.get(splitInput[1]);
+            if (Util.DIRECTIONS.containsKey(splitInput[1]))
+                out.direction = Util.DIRECTIONS.get(splitInput[1]);
             return out;
         }
         if (splitInput[0].equals("pickup")) {
@@ -54,6 +47,11 @@ public class Command
             out.theCommand = COMMAND_PICK_UP;
             out.item = splitInput[1];
             return out;
+        }
+        if (splitInput[0].equals("walk"))
+        {
+            out.theCommand = COMMAND_WALK;
+            
         }
         out.errorMessage = "Not a recognized command";
         out.theCommand = COMMAND_ERROR;

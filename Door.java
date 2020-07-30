@@ -2,42 +2,36 @@ import java.util.*;
 
 public class Door
 {
-    private String title;
+    
+    private String id;
     private String desc;
-    private double prob;
-
-    public Door(String title, String desc, double prob)
+    private boolean isOpen;
+    
+    
+    public Door(String id, String desc)
     {
-        this.title = title;
+        this.id = id;
         this.desc = desc;
-        this.prob = prob;
+        this.isOpen = false;
     }
 
-    public Boolean canPassThrough()
-    {
-        Random rand = new Random();
-        int range = rand.nextInt(10) + 1;
-        if (range >= 10 * prob)
-            return true;
-        return false;
-    }
-
+    
     public String getDesc()
     {
         return desc;
     }
 
-    public String getTitle()
+    public String getId()
     {
-        return title;
+        return id;
     }
 
     @Override
     public String toString()
     {
-        return title;
+        return desc;
     }
 
-
+    
 
 }

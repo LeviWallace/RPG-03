@@ -1,47 +1,18 @@
 import java.util.*;
 
 
-public class CaveRoom implements Room {
+public class CaveRoom extends Room {
 
     String name;
     String desc;
-    List<Door> doors;
+    // List<String> doors;
     List<String> items;
+    List<RoomDoor> doors;
 
-    public CaveRoom(String name, String desc, List<Door> doors, List<String> items)
+    public CaveRoom(String name, String desc, List<RoomDoor> doors, List<String> items)
     {
-        this.name = name;
-        this.desc = desc;
-        this.doors = doors;
-        this.items = items;
+        super(name, desc, doors, items);
     }
-
-    @Override
-    public String getName() 
-    {
-        return name;
-    }
-
-    @Override
-    public String getDesc()
-    {
-        return desc;
-    }
-
-    @Override
-    public List<String> getItems()
-    {
-        return items;
-    }
-
-    @Override
-    public List<Door> getDoors()
-    {
-        return doors;
-    } 
-
-    
-
     // @Override
     // public Door getDoorObjByIndx(int i) throws Exception
     // {
